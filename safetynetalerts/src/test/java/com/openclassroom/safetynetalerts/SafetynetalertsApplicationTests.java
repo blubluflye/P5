@@ -1,10 +1,10 @@
-package Openclassrooms.P5;
+package com.openclassroom.safetynetalerts;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class P5ApplicationTests {
+class SafetynetalertsApplicationTests {
 
 	@Test
 	void contextLoads() {

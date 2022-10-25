@@ -1,13 +1,13 @@
-package Openclassrooms.P5;
+package com.openclassroom.safetynetalerts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class P5Application {
+public class SafetynetalertsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(P5Application.class, args);
+		SpringApplication.run(SafetynetalertsApplication.class, args);
 	}
 
 }
