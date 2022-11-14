@@ -1,5 +1,10 @@
 package com.openclassroom.safetynetalerts.model;
 
-public class floodStation {
+import java.util.List;
 
+import lombok.Data;
+
+@Data
+public class floodStation {
+	List<Group> PeopleByBuilding;
 }

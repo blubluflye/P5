@@ -10,4 +10,8 @@ public class Child {
 	private String lastName;
 	private String age;
 	List<People> familyMembers;
+	
+	public void save(List<People> peopleList) {
+		this.familyMembers = peopleList;
+	}
 }

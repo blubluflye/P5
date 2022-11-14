@@ -9,4 +9,8 @@ public class PeopleFromFirestation {
 	List<People> people;
 	int adultNumber;
 	int childrenNumber;
+	
+	 public void save(List<People> personList) {
+			this.people = personList;
+		}
 }

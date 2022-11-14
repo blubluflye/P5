@@ -1,10 +1,19 @@
 package com.openclassroom.safetynetalerts.repository;
 
 import java.util.List;
-import org.springframework.stereotype.Repository;
+
+import org.springframework.stereotype.Component;
 import com.openclassroom.safetynetalerts.model.Firestation;
 
-@Repository
-public interface FirestationRepository extends List<Firestation>{
+@Component
+public class FirestationRepository {
+	List<Firestation> firestations;
+	
+	public void save(List<Firestation> stations) {
+		this.firestations = stations;
+	}
 
+	public List<Firestation> getAll() {
+		return firestations;
+	}
 }
