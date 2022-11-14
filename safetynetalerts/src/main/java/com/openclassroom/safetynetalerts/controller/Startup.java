@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassroom.safetynetalerts.model.NetFile;
-import com.openclassroom.safetynetalerts.model.PeopleFromFirestation;
 import com.openclassroom.safetynetalerts.repository.FirestationRepository;
 import com.openclassroom.safetynetalerts.repository.MedicalRecordRepository;
 import com.openclassroom.safetynetalerts.repository.PersonRepository;
+import com.openclassroom.safetynetalerts.service.ChildAlertAddressService;
 import com.openclassroom.safetynetalerts.service.PeopleFromFirestationService;
 
 @Component
@@ -29,6 +29,8 @@ public class Startup implements CommandLineRunner{
 	PersonRepository personRepository;
 	@Autowired
 	PeopleFromFirestationService service;
+	@Autowired
+	ChildAlertAddressService service2;
 	
 	@Override
 	public void run(String... args) throws Exception{
@@ -48,6 +50,9 @@ public class Startup implements CommandLineRunner{
 		personRepository.save(netFile.getPersons());
 		medicalRecordRepository.save(netFile.getMedicalrecords());
 		System.out.println(service.firestation(1));
+		System.out.println();
+		System.out.println(service2.childAlert("947 E. Rose Dr"));
+		
 
 	}
 

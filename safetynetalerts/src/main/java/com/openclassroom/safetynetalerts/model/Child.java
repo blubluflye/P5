@@ -8,7 +8,7 @@ import lombok.Data;
 public class Child {
 	private String firstName;
 	private String lastName;
-	private String age;
+	private int age;
 	List<People> familyMembers;
 	
 	public void save(List<People> peopleList) {
