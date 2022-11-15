@@ -14,6 +14,7 @@ import com.openclassroom.safetynetalerts.repository.FirestationRepository;
 import com.openclassroom.safetynetalerts.repository.MedicalRecordRepository;
 import com.openclassroom.safetynetalerts.repository.PersonRepository;
 import com.openclassroom.safetynetalerts.service.ChildAlertAddressService;
+import com.openclassroom.safetynetalerts.service.FireService;
 import com.openclassroom.safetynetalerts.service.PeopleFromFirestationService;
 import com.openclassroom.safetynetalerts.service.PhoneAlertService;
 
@@ -34,6 +35,8 @@ public class Startup implements CommandLineRunner{
 	ChildAlertAddressService service2;
 	@Autowired
 	PhoneAlertService service3;
+	@Autowired
+	FireService service4;
 	
 	@Override
 	public void run(String... args) throws Exception{
@@ -57,6 +60,10 @@ public class Startup implements CommandLineRunner{
 		System.out.println(service2.childAlert("947 E. Rose Dr"));
 		System.out.println();
 		System.out.println(service3.phoneAlert(1));
+		System.out.println();
+		System.out.println(service4.fire("947 E. Rose Dr"));
+
+
 
 	}
 
