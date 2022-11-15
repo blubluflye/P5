@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class Group {
 	private String address;
-	List<Citizen> citizens;
+	List<HouseMember> citizens;
 	
-	public void save(List<Citizen> listPeopleAtThisAddress) {
+	public void save(List<HouseMember> listPeopleAtThisAddress) {
 		this.citizens = listPeopleAtThisAddress;
 	}
 }

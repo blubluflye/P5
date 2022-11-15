@@ -18,6 +18,7 @@ import com.openclassroom.safetynetalerts.service.CommunityEmailService;
 import com.openclassroom.safetynetalerts.service.FireService;
 import com.openclassroom.safetynetalerts.service.FloodStationService;
 import com.openclassroom.safetynetalerts.service.PeopleFromFirestationService;
+import com.openclassroom.safetynetalerts.service.PersonInfoService;
 import com.openclassroom.safetynetalerts.service.PhoneAlertService;
 
 @Component
@@ -41,6 +42,8 @@ public class Startup implements CommandLineRunner{
 	FireService service4;
 	@Autowired
 	FloodStationService service5;
+	@Autowired
+	PersonInfoService service6;
 	@Autowired
 	CommunityEmailService service7;
 	
@@ -70,6 +73,8 @@ public class Startup implements CommandLineRunner{
 		System.out.println(service4.fire("947 E. Rose Dr"));
 		System.out.println();
 		System.out.println(service5.floodStation(1));
+		System.out.println();
+		System.out.println(service6.personInfo());
 		System.out.println();
 		System.out.println(service7.communityEmail("Culver"));
 

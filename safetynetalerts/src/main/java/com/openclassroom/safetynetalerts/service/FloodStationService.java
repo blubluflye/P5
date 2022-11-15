@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.openclassroom.safetynetalerts.model.Citizen;
+import com.openclassroom.safetynetalerts.model.HouseMember;
 import com.openclassroom.safetynetalerts.model.Firestation;
 import com.openclassroom.safetynetalerts.model.FloodStation;
 import com.openclassroom.safetynetalerts.model.Group;
@@ -38,30 +38,30 @@ public class FloodStationService {
 		for (String address : listAddressForStation) {
 			Group group = new Group();
 			group.setAddress(address);
-			List<Citizen> citizens = new ArrayList<Citizen>();
+			List<HouseMember> citizens = new ArrayList<HouseMember>();
 			//fill the citizen list for this group
 			for (Person p : personRepository.getAll()) {
 				//check if he lives at the good address
 				if (p.getAddress().equals(address)) {
 					//create a new citizen with person information needed
-					Citizen citizen = new Citizen();
-					citizen.setFirstName(p.getFirstName());
-					citizen.setLastName(p.getLastName());
-					citizen.setPhone(p.getPhone());
+					HouseMember houseMember = new HouseMember();
+					houseMember.setFirstName(p.getFirstName());
+					houseMember.setLastName(p.getLastName());
+					houseMember.setPhone(p.getPhone());
 					//go search other information in medicalRecordRepo about this person
 					for (MedicalRecord m : medicalRecordRepository.getAll()) {
 						if (m.getFirstName().equals(p.getFirstName()) && m.getLastName().equals(p.getLastName())) {
-							citizen.setAllergies(m.getAllergies());
-							citizen.setMedications(m.getMedications());
-							//compute age from birth date into int
+							houseMember.setAllergies(m.getAllergies());
+							houseMember.setMedications(m.getMedications());
+							//compute age from birth date into integer
 							DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 							LocalDate birthdate = LocalDate.parse(m.getBirthdate(), customFormatter);
 							LocalDate currentDate = LocalDate.now();
-							citizen.setAge(currentDate.getYear() - birthdate.getYear());
+							houseMember.setAge(currentDate.getYear() - birthdate.getYear());
 						}
 					}
 					//add him to the citizen List
-					citizens.add(citizen);
+					citizens.add(houseMember);
 				}
 				group.save(citizens);
 			}
