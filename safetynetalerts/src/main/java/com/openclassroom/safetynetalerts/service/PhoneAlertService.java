@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.openclassroom.safetynetalerts.model.Firestation;
-import com.openclassroom.safetynetalerts.model.People;
 import com.openclassroom.safetynetalerts.model.Person;
 import com.openclassroom.safetynetalerts.model.PhoneAlert;
 import com.openclassroom.safetynetalerts.repository.FirestationRepository;
