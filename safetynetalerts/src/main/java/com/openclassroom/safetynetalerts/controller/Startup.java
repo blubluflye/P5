@@ -1,6 +1,8 @@
 package com.openclassroom.safetynetalerts.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.openclassroom.safetynetalerts.model.Firestation;
 import com.openclassroom.safetynetalerts.model.NetFile;
 import com.openclassroom.safetynetalerts.repository.FirestationRepository;
 import com.openclassroom.safetynetalerts.repository.MedicalRecordRepository;
@@ -16,6 +19,7 @@ import com.openclassroom.safetynetalerts.repository.PersonRepository;
 import com.openclassroom.safetynetalerts.service.ChildAlertAddressService;
 import com.openclassroom.safetynetalerts.service.CommunityEmailService;
 import com.openclassroom.safetynetalerts.service.FireService;
+import com.openclassroom.safetynetalerts.service.FirestationService;
 import com.openclassroom.safetynetalerts.service.FloodStationService;
 import com.openclassroom.safetynetalerts.service.PeopleFromFirestationService;
 import com.openclassroom.safetynetalerts.service.PersonInfoService;
@@ -46,6 +50,8 @@ public class Startup implements CommandLineRunner{
 	PersonInfoService service6;
 	@Autowired
 	CommunityEmailService service7;
+	@Autowired
+	FirestationService firestationService;
 	
 	@Override
 	public void run(String... args) throws Exception{
@@ -77,7 +83,14 @@ public class Startup implements CommandLineRunner{
 		System.out.println(service6.personInfo());
 		System.out.println();
 		System.out.println(service7.communityEmail("Culver"));
-
+		Firestation firestation = new Firestation();
+		String address = "5 rue du bourg";
+		firestation.setAddress(address);
+		firestation.setStation(1);
+		firestationService.add(firestation);
+		List<Firestation> fList = firestationRepository.getAll();
+		firestation = fList.get(fList.size() - 1);
+		System.out.println(firestation);
 	}
 
 }

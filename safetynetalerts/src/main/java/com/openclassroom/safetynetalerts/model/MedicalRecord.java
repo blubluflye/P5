@@ -12,4 +12,10 @@ public class MedicalRecord {
 	private String birthdate;
 	private List<String> medications;
 	private List<String> allergies;
+	
+	public void update(MedicalRecord medRecord) {
+		this.birthdate = medRecord.getBirthdate();
+		this.medications = medRecord.getMedications();
+		this.allergies = medRecord.getAllergies();
+	}
 }

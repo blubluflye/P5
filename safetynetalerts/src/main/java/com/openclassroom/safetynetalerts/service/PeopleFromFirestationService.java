@@ -20,7 +20,7 @@ import com.openclassroom.safetynetalerts.repository.PersonRepository;
 @Service
 public class PeopleFromFirestationService {
 	@Autowired
-    private FirestationRepository firestationRepository ;
+    private FirestationRepository firestationRepository;
 	@Autowired
 	private MedicalRecordRepository medicalRecordRepository;
 	@Autowired
