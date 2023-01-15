@@ -9,8 +9,11 @@ import com.openclassroom.safetynetalerts.model.Person;
 public class PersonRepository {
 	 private List<Person> persons;
 	 
-	 public void add(Person person) {
-		 persons.add(person);
+	 public Person add(Person person) {
+		 if (persons.add(person)) {
+			 return person;
+		 }
+		 return null;
 	 }
 	 
 	 public void delete(String firstName, String Lastname) {
@@ -28,7 +31,7 @@ public class PersonRepository {
 			return persons;
 		}
 
-		public void update(Person person) {
+		public Person update(Person person) {
 			 for (Person p : persons) {
 				 if (p.getFirstName().equals(person.getFirstName()) && p.getLastName().equals(person.getLastName())) {
 					 p.setAddress(person.getAddress());
@@ -36,7 +39,9 @@ public class PersonRepository {
 					 p.setEmail(person.getEmail());
 					 p.setPhone(person.getPhone());
 					 p.setZip(person.getZip());
+					 return p;
 				 }	
 			 }
+			 return null;
 		}
 }

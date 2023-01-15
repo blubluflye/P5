@@ -18,19 +18,28 @@ public class FirestationRepository {
 		return firestations;
 	}
 
-	public void add(Firestation firestation) {
-		firestations.add(firestation);
+	public Firestation add(Firestation firestation) {
+		if (firestations.add(firestation))
+			return firestation;
+		else
+			return null;
 	}
 
-	public void delete(Firestation firestation) {
-		firestations.remove(firestation);
-	}
-
-	public void update(String address, int newFirestation) {
+	public void delete(String address, int firestation) {
 		for (Firestation f: firestations) {
-			if (f.getAddress().equals(address))
-				f.setStation(newFirestation);
+			if (f.getAddress().equals(address) && f.getStation()==firestation)
+				firestations.remove(firestation);
 		}
+	}
+
+	public Firestation update(String address, int newFirestation) {
+		for (Firestation f: firestations) {
+			if (f.getAddress().equals(address)) {
+				f.setStation(newFirestation);
+				return f;
+			}
+		}
+		return null;
 	}
 	
 	public FirestationRepository() {

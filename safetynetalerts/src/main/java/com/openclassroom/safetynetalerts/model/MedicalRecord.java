@@ -13,9 +13,12 @@ public class MedicalRecord {
 	private List<String> medications;
 	private List<String> allergies;
 	
-	public void update(MedicalRecord medRecord) {
-		this.birthdate = medRecord.getBirthdate();
-		this.medications = medRecord.getMedications();
-		this.allergies = medRecord.getAllergies();
+	public MedicalRecord update(MedicalRecord medRecord) {
+		if (medRecord != null) {
+			this.birthdate = medRecord.getBirthdate();
+			this.medications = medRecord.getMedications();
+			this.allergies = medRecord.getAllergies();
+		}
+		return medRecord;
 	}
 }

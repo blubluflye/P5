@@ -12,15 +12,15 @@ public class MedicalRecordService {
 	@Autowired
 	private MedicalRecordRepository medicalRecordRepository;
 	
-	public void add(MedicalRecord MedRecord) {
-		medicalRecordRepository.add(MedRecord);
+	public MedicalRecord add(MedicalRecord MedRecord) {
+		return medicalRecordRepository.add(MedRecord);
 	}
 	
 	public void delete(String firstName, String Lastname) {
 		medicalRecordRepository.delete(firstName, Lastname);
 	}
 	
-	public void update(MedicalRecord MedRecord) {
-		medicalRecordRepository.update(MedRecord);
+	public MedicalRecord update(MedicalRecord MedRecord) {
+		return medicalRecordRepository.update(MedRecord);
 	}
 }

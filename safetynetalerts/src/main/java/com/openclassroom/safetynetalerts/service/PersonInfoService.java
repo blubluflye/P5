@@ -22,28 +22,30 @@ public class PersonInfoService {
 	@Autowired
 	private PersonRepository personRepository;
 	
-	public PersonsInfo personInfo() {
+	public PersonsInfo personInfo(String firstName, String lastName) {
 		PersonsInfo result = new PersonsInfo();
 		List<PersonInfo> listPersonInfo= new ArrayList<PersonInfo>();
-		for (Person p : personRepository.getAll()) {
-			PersonInfo pInfo = new PersonInfo();
-			pInfo.setFirstName(p.getFirstName());
-			pInfo.setLastName(p.getLastName());
-			pInfo.setAddress(p.getAddress());
-			pInfo.setEmail(p.getEmail());
-			//go search other information in medicalRecordRepo about this person info
-			for (MedicalRecord m : medicalRecordRepository.getAll()) {
-				if (m.getFirstName().equals(p.getFirstName()) && m.getLastName().equals(p.getLastName())) {
-					pInfo.setAllergies(m.getAllergies());
-					pInfo.setMedications(m.getMedications());
-					//compute age from birth date into integer
-					DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-					LocalDate birthdate = LocalDate.parse(m.getBirthdate(), customFormatter);
-					LocalDate currentDate = LocalDate.now();
-					pInfo.setAge(currentDate.getYear() - birthdate.getYear());
+		for (Person p : personRepository.getAll()) {			
+			if(p.getFirstName().equals(firstName) && p.getLastName().equals(lastName)){
+				PersonInfo pInfo = new PersonInfo();
+				pInfo.setFirstName(p.getFirstName());
+				pInfo.setLastName(p.getLastName());
+				pInfo.setAddress(p.getAddress());
+				pInfo.setEmail(p.getEmail());
+				//go search other information in medicalRecordRepo about this person info
+				for (MedicalRecord m : medicalRecordRepository.getAll()) {
+					if (m.getFirstName().equals(p.getFirstName()) && m.getLastName().equals(p.getLastName())) {
+						pInfo.setAllergies(m.getAllergies());
+						pInfo.setMedications(m.getMedications());
+						//compute age from birth date into integer
+						DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+						LocalDate birthdate = LocalDate.parse(m.getBirthdate(), customFormatter);
+						LocalDate currentDate = LocalDate.now();
+						pInfo.setAge(currentDate.getYear() - birthdate.getYear());
+					}
 				}
+				listPersonInfo.add(pInfo);
 			}
-			listPersonInfo.add(pInfo);
 		}
 		result.save(listPersonInfo);
 		return result ;

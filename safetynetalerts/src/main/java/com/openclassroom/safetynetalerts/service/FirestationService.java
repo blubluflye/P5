@@ -11,15 +11,15 @@ public class FirestationService {
 	@Autowired
     private FirestationRepository firestationRepository;
 	
-	public void add(Firestation firestation) {
-		firestationRepository.add(firestation);
+	public Firestation add(Firestation firestation) {
+		return firestationRepository.add(firestation);
 	}
 	
-	public void delete(Firestation firestation) {
-		firestationRepository.delete(firestation);
+	public void delete(String address, int firestation) {
+		firestationRepository.delete(address, firestation);
 	}
 	
-	public void update(String address, int newFirestation) {
-		firestationRepository.update(address, newFirestation);
+	public Firestation update(String address, int newFirestation) {
+		return firestationRepository.update(address, newFirestation);
 	}
 }

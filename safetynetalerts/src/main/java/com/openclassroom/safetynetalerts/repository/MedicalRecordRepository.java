@@ -18,8 +18,10 @@ public class MedicalRecordRepository {
 		return medicalRecords;
 	}
 
-	public void add(MedicalRecord medRecord) {
-		medicalRecords.add(medRecord);
+	public MedicalRecord add(MedicalRecord medRecord) {
+		if (medicalRecords.add(medRecord))
+			return medRecord;
+		return null;
 	}
 
 	public void delete(String firstName, String lastname) {
@@ -29,11 +31,12 @@ public class MedicalRecordRepository {
 		}
 	}
 
-	public void update(MedicalRecord medRecord) {
+	public MedicalRecord update(MedicalRecord medRecord) {
 		for(MedicalRecord m: medicalRecords) {
 			if (m.getFirstName().equals(medRecord.getFirstName()) && m.getLastName().equals(medRecord.getLastName())) {
-				m.update(medRecord);
+				return m.update(medRecord);
 			}
 		}
+		return null;
 	}
 }

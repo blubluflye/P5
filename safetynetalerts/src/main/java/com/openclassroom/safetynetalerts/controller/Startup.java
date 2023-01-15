@@ -1,7 +1,6 @@
 package com.openclassroom.safetynetalerts.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -70,27 +69,6 @@ public class Startup implements CommandLineRunner{
 		firestationRepository.save(netFile.getFirestations()) ;
 		personRepository.save(netFile.getPersons());
 		medicalRecordRepository.save(netFile.getMedicalrecords());
-		System.out.println(service.firestation(1));
-		System.out.println();
-		System.out.println(service2.childAlert("947 E. Rose Dr"));
-		System.out.println();
-		System.out.println(service3.phoneAlert(1));
-		System.out.println();
-		System.out.println(service4.fire("947 E. Rose Dr"));
-		System.out.println();
-		System.out.println(service5.floodStation(1));
-		System.out.println();
-		System.out.println(service6.personInfo());
-		System.out.println();
-		System.out.println(service7.communityEmail("Culver"));
-		Firestation firestation = new Firestation();
-		String address = "5 rue du bourg";
-		firestation.setAddress(address);
-		firestation.setStation(1);
-		firestationService.add(firestation);
-		List<Firestation> fList = firestationRepository.getAll();
-		firestation = fList.get(fList.size() - 1);
-		System.out.println(firestation);
 	}
 
 }
