@@ -18,7 +18,8 @@ public class PersonController {
 	private PersonService personService;
 	
 	public PersonController(PersonService personService) {
-		this.personService = personService;
+		this.personService = new PersonService();
+		this.personService.setPersonRepository(personService.getPersonRepository());
 	}
 	
 	/**

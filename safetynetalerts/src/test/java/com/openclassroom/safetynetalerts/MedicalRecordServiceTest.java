@@ -11,6 +11,12 @@ import com.openclassroom.safetynetalerts.model.MedicalRecord;
 import com.openclassroom.safetynetalerts.repository.MedicalRecordRepository;
 import com.openclassroom.safetynetalerts.service.MedicalRecordService;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import java.util.Collections;
 
 @ExtendWith(MockitoExtension.class)
@@ -39,16 +45,24 @@ public class MedicalRecordServiceTest {
 	
 	@Test
 	void addMedicalRecord() {
-		
+		given(medicalRecordRepository.add(medicalRecord)).willReturn(medicalRecord);
+		MedicalRecord result = medicalRecordService.add(medicalRecord);
+		//check result
+		assertThat(result).isNotNull();
 	}
 	
 	@Test
 	void deleteMedicalRecord() {
-		
+		willDoNothing().given(medicalRecordRepository).delete(medicalRecord.getFirstName(), medicalRecord.getLastName());
+		medicalRecordService.delete(medicalRecord.getFirstName(), medicalRecord.getLastName());
+		verify(medicalRecordRepository, times(1)).delete(medicalRecord.getFirstName(), medicalRecord.getLastName());
 	}
 
 	@Test
 	void updateMedicalRecord() {
-		
+		given(medicalRecordRepository.update(medicalRecord)).willReturn(medicalRecord);
+		MedicalRecord result = medicalRecordService.update(medicalRecord);
+		//check result
+		assertThat(result).isNotNull();
 	}
 }

@@ -11,11 +11,11 @@ public class FirestationRepository {
 	List<Firestation> firestations;
 	
 	public void save(List<Firestation> stations) {
-		this.firestations = stations;
+		this.firestations = List.copyOf(stations);
 	}
 
 	public List<Firestation> getAll() {
-		return firestations;
+		return List.copyOf(firestations);
 	}
 
 	public Firestation add(Firestation firestation) {

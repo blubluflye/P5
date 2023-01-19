@@ -6,9 +6,14 @@ import org.springframework.stereotype.Service;
 import com.openclassroom.safetynetalerts.model.Person;
 import com.openclassroom.safetynetalerts.repository.PersonRepository;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
+@Setter(onMethod_ = @SuppressFBWarnings({"EI_EXPOSE_REP2","EI_EXPOSE_REP"}))
+@Getter(onMethod_ = @SuppressFBWarnings({"EI_EXPOSE_REP2","EI_EXPOSE_REP"}))
 @Service
 public class PersonService {
 	@Autowired

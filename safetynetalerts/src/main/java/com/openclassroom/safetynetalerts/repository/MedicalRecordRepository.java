@@ -11,11 +11,11 @@ public class MedicalRecordRepository {
 	List<MedicalRecord> medicalRecords;
 	
 	public void save(List<MedicalRecord> records) {
-		this.medicalRecords = records;
+		this.medicalRecords = List.copyOf(records);
 	}
 
 	public List<MedicalRecord> getAll() {
-		return medicalRecords;
+		return List.copyOf(medicalRecords);
 	}
 
 	public MedicalRecord add(MedicalRecord medRecord) {

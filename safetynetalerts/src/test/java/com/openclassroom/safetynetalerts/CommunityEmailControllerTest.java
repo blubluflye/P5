@@ -16,7 +16,7 @@ public class CommunityEmailControllerTest {
 	private MockMvc mockMvc;
 	
 	@Test
-	public void CommunityEmail() throws Exception {
+	public void communityEmail() throws Exception {
 		mockMvc.perform(get("/communityEmail").param("city", "Culver")).andExpect(status().isOk());
 	}
 }

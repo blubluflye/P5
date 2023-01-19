@@ -40,6 +40,20 @@
    <groupId>com.fasterxml.jackson.core</groupId>
    <artifactId>jackson-core</artifactId>
   </dependency>
+  
+<!-- for SuppressFBWarnings on data getter setter -->
+<dependency>
+    <groupId>com.google.code.findbugs</groupId>
+    <artifactId>annotations</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>com.google.code.findbugs</groupId>
+    <artifactId>jsr305</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>
 
 <!-- add web -->
   <dependency>

@@ -24,11 +24,11 @@ public class PersonRepository {
 	 }
 	 
 	 public void save(List<Person> personList) {
-			this.persons = personList;
+			this.persons = List.copyOf(personList);
 		}
 
 		public  List<Person> getAll() {
-			return persons;
+			return List.copyOf(persons);
 		}
 
 		public Person update(Person person) {
